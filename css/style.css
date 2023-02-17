@@ -1,0 +1,694 @@
+@font-face {
+    font-family: 'Uni Sans';
+    font-style: italic;
+    font-weight: 900;
+    /* Браузер сначала попробует найти шрифт локально */
+    src: local('Uni Sans'),
+        /* Если не получилось, загрузит woff2 */
+        url("/fonts/UniSans.woff2") format("woff2"),
+        /* Если браузер не поддерживает woff2, загрузит woff */
+        url("/fonts/UniSans.woff") format("woff");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    max-width: 100%;
+    max-height: 1080px;
+    font-family: 'Uni Sans', "Arial", sans-serif;
+    font-style: italic;
+    color: #fff;
+}
+
+.conteiner {
+    width: 100%;
+    min-height: 100vh;
+    flex-direction: column;
+    background-image: url(../img/bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.heading-conteiner {
+    position: absolute;
+    display: grid;
+    width: 100%;
+    height: 100vh;
+    grid-template-columns: 1fr;
+    align-items: center;
+    flex-direction: column;
+    grid-template-rows: 5% 7% 10% 1fr;
+    justify-items: center;
+    row-gap: .5%;
+
+}
+
+.logo {
+    max-width: 100%;
+    margin-top: 1%;
+    max-height: 100%;
+    grid-row: 1;
+    width: 10%;
+    height: 100%;
+    background-image: url(../img/logo.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: width 0.5s ease-in-out, max-width 0.5s ease-in-out;
+}
+
+.header-description {
+    grid-row: 2;
+    font-size: 1.992vw;
+    line-height: 1.1926em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: width 0.5s ease-in-out, max-width 0.5s ease-in-out;
+}
+
+.header-heading {
+    grid-row: 3;
+    padding: 0.8%;
+    font-weight: 900;
+    font-size: 2.4944vw;
+    line-height: 1.203em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: #C6217D;
+    transform: matrix(1, 0, -0.3, 1, 0, 0);
+    transition: width 0.5s ease-in-out, max-width 0.5s ease-in-out;
+}
+
+.spiner {
+    grid-row: 4;
+    width: 34%;
+    max-width: 100%;
+    height: 90%;
+    max-height: 100%;
+    min-height: 1%;
+    position: relative;
+    background-image: url(../img/bg_whell.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    transition: width 0.5s ease-in-out, max-width 0.5s ease-in-out;
+}
+
+.arrow {
+    max-width: 100%;
+    width: 33%;
+    height: 43%;
+    position: absolute;
+    top: 26%;
+    left: 48%;
+    background-image: url(../img/arrow.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease-in-out, max-width 0.5s ease-in-out;
+}
+
+.innercircle {
+    max-width: 100%;
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    z-index: 1;
+    background-image: url(../img/innercircle.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 6%;
+    left: 8%;
+    transition: width 0.5s ease-in-out, max-width 0.5s ease-in-out;
+}
+
+.spin-btn {
+    max-width: 100%;
+    width: 20%;
+    height: 20%;
+    background: url(../img/buttom.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    border-radius: 50%;
+    position: absolute;
+    top: 46%;
+    left: 48%;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease-in-out, max-width 0.5s ease-in-out;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spin-animation-innercircle {
+    animation: circle-rotate 4.5s linear;
+    animation-play-state: running; /* Запустить анимацию */
+}
+
+.spin-animation-innercircle.stopped {
+    animation-play-state: paused; /* Приостановить анимацию */
+}
+
+.spin-animation-btn {
+    animation: pulse 1s infinite;
+    animation-play-state: running; /* Запустить анимацию */
+}
+
+.spin-animation-btn.stopped {
+    animation-play-state: paused; /* Приостановить анимацию */
+}
+
+@keyframes circle-rotate {
+    from {
+        transform:  rotate(0deg);
+    }
+
+    to {
+        transform:  rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    from {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    to {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+.bc-woman {
+    max-width: 100%;
+    width: 33.66%;
+    height: 64.445%;
+    min-height: 1%;
+    position: absolute;
+    z-index: 3;
+    bottom: 0%;
+    right: 52%;
+    background-image: url(../img/devushka.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    transition: width 0.5s ease-in-out, max-width 0.5s ease-in-out;
+}
+
+.ball-sm {
+    position: absolute;
+    max-width: 100%;
+    width: 9.375%;
+    height: 15.834%;
+    left: 14%;
+    top: 5%;
+    min-width: 0.1%;
+    background-image: url(../img/ball-sm.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: width 0.5s ease-in-out, max-width 0.5s ease-in-out;
+}
+
+.ball-xl {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    width: 13.83%;
+    min-width: 1%;
+    height: 28.9%;
+    min-height: 1%;
+    background-image: url(../img/ball-xl.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    top: 50%;
+    right: 0%;
+    transition: width 0.5s ease-in-out, max-width 0.5s ease-in-out;
+}
+
+.ball-green,
+.ball-orange,
+.ball-pink,
+.ball-purple {
+    position: absolute;
+    max-width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.ball-purple {
+    width: 3.3339%;
+    height: 5.926%;
+    right: 19%;
+    top: 21%;
+    background-image: url(../img/ball-purple.png);
+}
+
+.ball-pink {
+    right: 9%;
+    top: 29%;
+    width: 2.5%;
+    height: 4.445%;
+    background-image: url(../img/ball-pink.png);
+}
+
+.ball-green {
+    right: 17.6%;
+    top: 43%;
+    width: 3.8548%;
+    height: 6.853%;
+    background-image: url(../img/ball-green.png);
+}
+
+.ball-orange {
+    width: 3.2293%;
+    height: 5.741%;
+    top: 55%;
+    left: 6%;
+    background-image: url(../img/ball-orange.png);
+}
+
+.ball-sm,
+.ball-purple,
+.ball-pink,
+.ball-orange,
+.ball-xl,
+.ball-green,
+.bc-woman {
+    opacity: 0;
+}
+/* начальное состояние блоков */
+
+.ball-sm {
+    animation: slide-in 1s ease 0.2s forwards;
+}
+
+.ball-purple {
+    animation: slide-in 1s ease 0.5s forwards;
+}
+
+.ball-pink {
+    animation: slide-in 1s ease 1s forwards;
+}
+
+.ball-orange {
+    animation: slide-in 1s ease 0.2s forwards;
+}
+
+.ball-xl {
+    animation: slide-in 1s ease 0.5s forwards;
+}
+
+.ball-green {
+    animation: slide-in 1s ease 1s forwards;
+}
+
+.bc-woman {
+    animation: slide-in 1s ease 1s forwards;
+}
+
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translate(50%, -50%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+/** Pop-ap*/
+
+#popup-overlay,
+#popup-overlay-lost {
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+    transition: opacity 0.5s ease-in-out, width 0.5s ease-in-out, max-width 0.5s ease-in-out;
+}
+
+#popup-content {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 63%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    text-align: center;
+}
+
+#popup-content-lost {
+    max-width: 100%;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    text-align: center;
+}
+
+#popup-image-container {
+    background-image: url(../img/popupWin.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    position: relative;
+    max-width: 100%;
+    width: 33.907%;
+    height: 74%;
+    overflow: hidden;
+    transition: width 0.5s ease-in-out, max-width 0.5s ease-in-out;
+}
+
+#popup-image-container-lost {
+    background-image: url(../img/popupLost.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    position: relative;
+    max-width: 100%;
+    width: 32.865%;
+    height: 36%;
+    overflow: hidden;
+    transition: width 0.5s ease-in-out, max-width 0.5s ease-in-out;
+}
+
+#popup-image,
+#popup-image-lost {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -150%);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, width 0.5s ease-in-out, max-width 0.5s ease-in-out;
+}
+
+@media (max-width: 1024px) {
+
+    .header-heading {
+        font-size: 3.4944vw;
+    }
+
+    .header-description {
+        font-size: 2.992vw;
+    }
+
+    .spiner {
+        width: 55%;
+    }   
+
+    .arrow {
+        width: 32%;
+        height: 43%;
+    }
+
+    .bc-woman {
+        right: 57%;
+    }
+
+    .ball-xl {
+        width: 30%;
+        height: 30%;
+        top: 70%;
+    }
+    
+}
+
+@media (max-width: 768px) {
+    
+
+    .logo {
+        width: 15%;
+    }
+
+    .header-heading {
+        font-size: 4.4944vw;
+    }
+
+    .header-description {
+        font-size: 3.992vw;
+    }
+
+    .spiner {
+        width: 57%;
+    }   
+
+    .bc-woman {
+        width: 43.66%;
+    }
+
+}
+
+@media (max-width: 715px) and (min-width: 441px) {
+
+    .logo {
+        width: 18%;
+    }
+
+    .header-heading {
+        font-size: 5.4944vw;
+    }
+
+    .header-description {
+        font-size: 3.992vw;
+    }
+
+    .spiner {
+        width: 61%;
+        height: 87%;
+        bottom: 0%;
+    }   
+
+    .bc-woman {
+        width: 39.66%;
+        top: 58%;
+        height: 42%;
+        right: 61%;
+    }
+
+    .ball-sm {
+        width: 16.375%;
+        height: 9.834%;
+        left: 0%;
+        top: 0%;
+    }
+
+    .ball-xl {
+        top: 74%;
+    }
+
+    .ball-purple {
+        width: 8.3339%;
+        height: 5.926%;
+        right: 16%;
+        top: 1%;
+    }
+    
+    .ball-pink {
+        right: 7%;
+        top: 25%;
+        width: 6.5%;
+        height: 4.445%;
+    }
+
+    .ball-green {
+        right: 17%;
+        top: 50%;
+        width: 5.8548%;
+        height: 6.853%;
+    }
+
+    
+    .ball-orange {
+        width: 8.2293%;
+        height: 5.741%;
+        top: 74%;
+        left: 0%;
+    }
+}
+
+@media (max-width: 440px) and (min-width: 375px) {
+
+    .conteiner {
+        background-image: url(../img/bg-mb.png);
+    }
+
+    .logo {
+        width: 29%;
+    }
+
+    .header-heading {
+        font-size: 7.4944vw;
+    }
+
+    .header-description {
+        font-size: 5.992vw;
+    }
+
+    .spiner {
+        width: 86%;
+        height: 76%;
+        bottom: 11%;
+    }   
+
+    .bc-woman {
+        width: 66.66%;
+        top: 58%;
+        height: 42%;
+        right: 34%;
+    }
+
+    .ball-sm {
+        width: 16.375%;
+        height: 9.834%;
+        left: 0%;
+        top: 0%;
+    }
+
+    .ball-xl {
+        top: 74%;
+    }
+
+    .ball-purple {
+        width: 8.3339%;
+        height: 5.926%;
+        right: 16%;
+        top: 1%;
+    }
+    
+    .ball-pink {
+        right: 7%;
+        top: 25%;
+        width: 6.5%;
+        height: 4.445%;
+    }
+
+    .ball-green {
+        right: 0%;
+        top: 57%;
+        width: 10.8548%;
+        height: 6.853%;
+    }
+
+    .ball-orange {
+        width: 8.2293%;
+        height: 5.741%;
+        top: 74%;
+        left: 0%;
+    }
+}
+
+@media (max-width: 374px) and (min-width: 300px) {
+    .conteiner {
+        background-image: url(../img/bg-mb.png);
+    }
+
+    .logo {
+        width: 29%;
+    }
+
+    .header-heading {
+        font-size: 7.4944vw;
+    }
+
+    .header-description {
+        font-size: 5.992vw;
+    }
+
+    .spiner {
+        width: 100%;
+        height: 66%;
+        bottom: 11%;
+    }   
+
+    .arrow {
+        top: 26%;
+        width: 33%;
+        height: 43%;
+    }
+
+    .bc-woman {
+        width: 66.66%;
+        top: 58%;
+        height: 42%;
+        right: 34%;
+    }
+
+    .ball-sm {
+        width: 16.375%;
+        height: 9.834%;
+        left: 0%;
+        top: 0%;
+    }
+
+    .ball-xl {
+        top: 74%;
+    }
+
+    .ball-purple {
+        width: 8.3339%;
+        height: 5.926%;
+        right: 16%;
+        top: 1%;
+    }
+    
+    .ball-pink {
+        right: 7%;
+        top: 25%;
+        width: 6.5%;
+        height: 4.445%;
+    }
+
+    .ball-green {
+        right: 0%;
+        top: 57%;
+        width: 10.8548%;
+        height: 6.853%;
+    }
+
+    .ball-orange {
+        width: 8.2293%;
+        height: 5.741%;
+        top: 74%;
+        left: 0%;
+    }
+}
