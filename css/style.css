@@ -563,7 +563,12 @@ body {
     .header-description {
         font-size: 5.992vw;
     }
-
+    .arrow {
+        width: 33%;
+            height: 39%;
+        top: 32%;
+    }
+    
     .spiner {
         width: 86%;
         height: 76%;
@@ -614,6 +619,14 @@ body {
         height: 5.741%;
         top: 74%;
         left: 0%;
+    }
+
+    #popup-image-container {
+        width: 97.907%;
+    }
+
+    #popup-image-container-lost {
+        width: 94.865%;
     }
 }
 
